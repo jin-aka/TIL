@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<h1>Cust Detail Page</h1>
+
+<div class="container">
+	<h2>Cust Detail</h2>
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>ID</th><th>PWD</th><th>NAME</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th><p th:text="${dcust.id}"></p></th>
+				<th><p th:text="${dcust.pwd}"></p></th>
+				<th><p th:text="${dcust.name}"></p></th>
+			</tr>
+		</tbody>
+	</table>
+	<div class="bcontainer">
+	 <button type="button" class="btn btn-default"><a href="" th:href="@{delete(id=${dcust.id})}">DELETE</a></button>
+	 <button type="button" class="btn"><a href="" th:href="@{update(id=${dcust.id})}">UPDATE</a></button>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Select Page</h1>
+	<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>RATE</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${allproduct}">
+				<td><a href="productdetail"  th:href="@{/productdetail(id=${c.id})}" th:text="${c.id}"></a>ID</td>
+				<td th:text="${c.name}">NAME</td>
+				<td th:text="${c.price}">PRICE</td>
+				<td th:text="${c.rate}">RATE</td> 
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

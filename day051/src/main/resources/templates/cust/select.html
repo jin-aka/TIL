@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Insert title here</title>
+</head>
+<style>
+	#container{
+		width: 900px;
+	}
+</style>
+<body>
+<h1>Cust Select Page</h1>
+	<div id = "container" class="container">
+	<h2>Cust List</h2>
+	
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>ID</th><th>NAME</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${allcust}">
+				<td><a href="detail"  th:href="@{detail(id=${c.id})}" th:text="${c.id}"></a></td>
+				<td th:text="${c.name}">NAME</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	</div>
+</body>
+</html>

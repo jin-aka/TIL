@@ -1,0 +1,59 @@
+<meta charset="UTF-8">
+
+<script>
+$(document).ready(function(){
+	
+	$('#id').keyup(function(){
+		var inputid = $(this).val();
+		$.ajx({
+			url:'/checkid',
+			data:{id:inputid},
+			success:function(result){
+				if(result == '1'){
+					$('#iid').text('사용불가');
+				}else{
+					$('#iid').text('사용가능');
+				}
+			}
+		});
+	});
+	
+	
+	$('#registerbtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'/registerimpl'
+		});
+		$('.user').submit();
+	});
+});
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Register</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                ID: <input type="text" class="form-control form-control-user" name="id">
+                 <h5 id="iid"></h5>
+            </div>
+            <div class="form-group">
+                PWD: <input type="text" class="form-control form-control-user" name="pwd">
+            </div>
+            <div class="form-group">
+               NAME:  <input type="text" class="form-control form-control-user" name="name">
+            </div>
+            <div class="form-group">
+               ADDR: <input type="text" class="form-control form-control-user" name="addr">
+            </div>
+            
+            <a id="registerbtn" class="btn btn-primary btn-user btn-block" >
+                REGISTER
+            </a>
+            
+        </form>
+        
+    </div>
+</div>

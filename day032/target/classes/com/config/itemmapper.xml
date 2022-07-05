@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ItemMapper">
+	
+	
+	<select id="select" parameterType="int" resultType="item">
+		SELECT * FROM ITEM WHERE ID=#{obj}
+	</select>
+	<select id="selectall" resultType="item">
+		SELECT * FROM ITEM
+	</select>
+	<insert id="insert" parameterType="item">
+		INSERT INTO ITEM VALUES (NULL, #{name},#{price},#{imgname},REGDATE())
+	</insert>
+	<update id="update" parameterType="item">
+		UPDATE ITEM SET NAME=#{name},PRICE=#{price},IMGNAME=#{imgname} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM ITEM WHERE ID=#{obj}
+	</delete>
+	
+	
+	
+	<select id="searchname" parameterType="String" resultType="item">
+		SELECT * FROM ITEM WHERE NAME LIKE CONCAT('%',#{name},'%')
+	</select>
+	<select id="searchprice" parameterType="map" resultType="item">
+		SELECT * FROM ITEM WHERE PRICE BETWEEN #{low} AND #{high}
+	</select>
+	<select id="searchdate" parameterType="String" resultType="item">
+		SELECT * FROM ITEM WHERE REGDATE >= #{date}
+	</select>
+</mapper>
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	#container{
+		width: 300px
+	}
+</style>
+
+<h1>Cust Update Page</h1>
+<div id="container" class="container">
+	<form action="updateimpl" method="post">
+		<div class="form-group">
+		ID: <span th:text="${ucust.id}"></span>
+		<input type="hidden" name="id" value="" th:value="${ucust.id}">
+		</div>
+		
+		<div class="form-group">
+		<label for="pwd">PWD</label>
+		<input type="text" class="form-control" name="pwd" value="" th:value="${ucust.pwd}"><br>
+		</div>
+		
+		<div class="form-group">
+		<label for="name">NAME</label>
+		<input type="text" class="form-control" name="name" value="" th:value="${ucust.name}"><br>
+		</div>
+		<input type="submit" value="UPDATE"><br>
+	</form>
+</div>

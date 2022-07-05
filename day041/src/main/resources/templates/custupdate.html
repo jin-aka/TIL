@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Update Page</h1>
+	<form action="custupdateimpl" method="post">
+	ID<input type="text" name="id" value="" th:value="${ucust.id}" readonly="readonly"><br>	
+	ID: <span th:text="${ucust.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${ucust.id}">
+	
+	PWD<input type="text" name="pwd" value="" th:value="${ucust.pwd}"><br>
+	NAME<input type="text" name="name" value="" th:value="${ucust.name}"><br>
+	<input type="submit" value="UPDATE"><br>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	#container{
+		width: 300px
+	}
+</style>
+
+<h1>Product Register Page</h1>
+<div id="container" class="container">
+  <h2>Product Register</h2>
+	<form action="registerimpl" method="POST">
+		<div class="form-group">
+		<label for="name">NAME</label>
+		<input type="text" class="form-control" name="name" id="name"><br>
+		</div>
+		<div class="form-group">
+		<label for="price">PRICE</label>
+		<input type="number" class="form-control" name="price" id="price"><br>
+		</div>
+		<div class="form-group">
+		<label for="rate">RATE</label>
+		<input type="text" class="form-control" name="rate" id="rate"><br>
+		</div>
+		<input type="submit" name="REGISTER"><br>
+	</form>
+</div>

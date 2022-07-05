@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Select Page</h1>
+	<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${allcust}">
+				<td><a href="custdetail"  th:href="@{/custdetail(id=${c.id})}" th:text="${c.id}"></a>ID</td>
+				<td th:text="${c.name}">NAME</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

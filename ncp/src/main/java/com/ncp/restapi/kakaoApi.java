@@ -8,12 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Component;
 
 @Component
 public class kakaoApi {
 
-	public String kakaolocalapi(String keyword) throws Exception {
+	public Object kakaolocalapi(String keyword) throws Exception {
 		String address = "https://dapi.kakao.com/v2/local/search/keyword.JSON";
 		
         String param = "query=" + keyword
@@ -57,8 +58,9 @@ public class kakaoApi {
 	
 		inputStream.close();
 		conn.disconnect();
-
-		return json;		
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(json);
+		return obj;	
 	}
 	
 }

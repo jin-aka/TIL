@@ -15,4 +15,9 @@ public class MainController {
 	public String kakao() {
 		return "kakao";
 	}
+	
+	@RequestMapping("/papago")
+	public String papago() {
+		return "papago";
+	}
 }

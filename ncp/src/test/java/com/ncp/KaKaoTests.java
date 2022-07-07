@@ -14,9 +14,7 @@ class KaKaoTests {
 	
 	@Test
 	void contextLoads() throws Exception {
-		String result = "";
-		result = kakaoapi.kakaolocalapi("fitness");
-		System.out.println(result);
+		kakaoapi.kakaolocalapi("fitness");
 	
 	}
 

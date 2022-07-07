@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ncp.restapi.kakaoApi;
+import com.ncp.restapi.naverApi;
 
 @RestController
 public class AjaxController {
@@ -12,11 +13,20 @@ public class AjaxController {
 	@Autowired
 	kakaoApi kakaoapi;
 	
+	@Autowired
+	naverApi naverapi;
+	
+	@RequestMapping("papagotr")
+	public Object papagotr(String txt) throws Exception {
+		Object obj = naverapi.papago(txt);
+		return obj;
+	}
+	
 	@RequestMapping("kakaolocal")
 	public Object kakaolocal(String keyword) throws Exception {
-		System.out.println(keyword);
-		String result = kakaoapi.kakaolocalapi(keyword);
+		Object result = kakaoapi.kakaolocalapi(keyword);
 		return result;
 	}
+
 
 }

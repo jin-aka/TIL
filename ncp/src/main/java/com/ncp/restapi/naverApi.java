@@ -1,0 +1,65 @@
+package com.ncp.restapi;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Component;
+
+@Component
+public class naverApi {
+
+	String clientId = "in5r9309wr";//애플리케이션 클라이언트 아이디값";
+    String clientSecret = "E6a9EStYD8Sb7L0clxf0HAW03Qd5zA7aLT49MlSE";//애플리케이션 클라이언트 시크릿값";
+    
+	public Object papago(String txt) {
+		String result = "";
+		  try {
+	            String text = URLEncoder.encode(txt, "UTF-8");
+	            String apiURL = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation";
+	            URL url = new URL(apiURL);
+	            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+	            con.setRequestMethod("POST");
+	            con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+	            con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+	            // post request
+	            String postParams = "source=ko&target=en&text=" + text;
+	            con.setDoOutput(true);
+	            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+	            wr.writeBytes(postParams);
+	            wr.flush();
+	            wr.close();
+	            int responseCode = con.getResponseCode();
+	            BufferedReader br;
+	            if(responseCode==200) { // 정상 호출
+	                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+	            } else {  // 오류 발생
+	                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+	            }
+	            String inputLine;
+	            StringBuffer response = new StringBuffer();
+	            while ((inputLine = br.readLine()) != null) {
+	                response.append(inputLine);
+	            }
+	            br.close();
+	            result = response.toString();
+	            System.out.println(response.toString());
+	        } catch (Exception e) {
+	            System.out.println(e);
+	        }
+		  JSONParser parser = new JSONParser();
+		  Object obj = null;
+		  try {
+			obj = parser.parse(result);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return obj;
+	}
+}

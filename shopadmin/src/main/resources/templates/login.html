@@ -1,0 +1,36 @@
+<script>
+$(document).ready(function(){
+	$('#loginbtn').click(function(){
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl'
+		});
+		$('#login_form').submit();
+	});
+});
+</script>
+
+<div class="col-lg-4">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Admin Login</h1>
+            <h5 th:text="${msg}"></h5>
+        </div>
+        <form class="user" id="login_form">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="id"  placeholder="Enter ID" >
+            </div>
+            <div class="form-group">
+                 <input type="text" class="form-control form-control-user"
+                    name="pwd" placeholder="Enter Password" >
+            </div>
+             
+             <a id="loginbtn" href="index.html" class="btn btn-primary btn-user btn-block">
+                Login
+            </a>
+            
+        </form>
+        
+    </div>
+</div>

@@ -1,0 +1,50 @@
+
+ <!-- Page Heading -->
+ <h1 class="h3 mb-2 text-gray-800">Cart Tables</h1>
+
+ <!-- DataTales Example -->
+ <div class="card shadow mb-4">
+
+     <div class="card-body">
+         <div class="table-responsive">
+             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                 <thead>
+                     <tr>
+               			 <th>ID</th>
+                         <th>CUST ID</th>
+                         <th>PRODUCT ID</th>
+                         <th>PRODUCT NAME</th>
+                         <th>PRPDUCT PRICE</th>
+                         <th>CATEGORY</th>
+                         <th>REGDATE</th>
+                         <th>COUNT</th>
+                     </tr>
+                 </thead>
+                 <tfoot>
+                     <tr>
+               			 <th>ID</th>
+                         <th>CUST ID</th>
+                         <th>PRODUCT ID</th>
+                         <th>PRODUCT NAME</th>
+                         <th>PRPDUCT PRICE</th>
+                         <th>CATEGORY</th>
+                         <th>REGDATE</th>
+                         <th>COUNT</th>
+                     </tr>
+                 </tfoot>
+                 <tbody>
+                     <tr th:each="c : ${clist}">
+                         <td><a th:text="${c.id}" th:href="@{detail(id=${c.id})}">id01</a></td>
+                         <td th:text="${c.uid}">UID</td>
+                         <td th:text="${c.pid}">PID</td>
+                         <td th:text="${c.pname}">PNAME</td>
+                         <td th:text="${c.pprice}">PPRICE</td>
+                         <td th:text="${c.catename}">CATENAME</td>
+                         <td th:text="${#dates.format(c.regdate,'yyyy/MM/dd')}">2011/04/25</td>
+                         <td th:text="${c.cnt}">CNT</td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>

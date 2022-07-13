@@ -1,0 +1,37 @@
+
+ <!-- Page Heading -->
+ <h1 class="h3 mb-2 text-gray-800">Category Tables</h1>
+
+ <!-- DataTales Example -->
+ <div class="card shadow mb-4">
+
+     <div class="card-body">
+         <div class="table-responsive">
+             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                 <thead>
+                     <tr>
+                         <th>ID</th>
+                         <th>NAME</th>
+                         <th>PID</th>
+                     </tr>
+                 </thead>
+                 <tfoot>
+                     <tr>
+                         <th>ID</th>
+                         <th>NAME</th>
+                         <th>PID</th>
+                     </tr>
+                 </tfoot>
+                 <tbody>
+                     <tr th:each="c : ${clist}">
+                     	<!--  /cust/detail?id=id01........ -->
+                         <td><a th:text="${c.id}" th:href="@{detail(id=${c.id})}">id01</a></td>
+                         <td th:text="${c.name}">name</td>
+                         <td th:if="${c.pid == 0}" th:text="TOP">pid</td>
+                         <td th:unless="${c.pid == 0}" th:text="${c.pid}">pid</td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>

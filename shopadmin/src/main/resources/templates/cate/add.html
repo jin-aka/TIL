@@ -1,0 +1,65 @@
+<meta charset="UTF-8">
+
+<script>
+function sendID(){
+	$.ajax({
+		url:'/catecheckid',
+		data:{'id':id},
+		success:function(data){
+			if(data == '1'){
+				$('#sid').text('사용불가 ID');
+			}else{
+				$('#sid').text('사용가능한 ID');
+			}
+			
+		}
+	})
+}
+
+$(document).ready(function(){
+	$('input[name="id"]').blur(function(){
+		var id = $(this).val();
+		sendId(id);
+	})
+	
+	$('#registerbtn').click(function(){
+		$('.cateadd').attr({
+			'method':'post',
+			'action':'addimpl'
+		});
+		$('.cateadd').submit();
+	});	
+});
+</script>
+
+
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Category Register</h1>
+        </div>
+        <form class="cateadd">
+           	<div class="form-group">
+               ID:<span id="sid"></span><input type="text" class="form-control form-control-user" name="id">
+            </div>
+            <div class="form-group">
+               NAME:<input type="text" class="form-control form-control-user" name="name">
+            </div>
+            <div class="form-group">
+               PID: 
+               <select name="pid" class="form-control form-control-user">
+            		<option value="0">TOP</option>
+            		<option th:each="c : ${slist}" 
+            				th:value="${c.id}" 
+            				th:text="${c.name}"></option>           
+               </select>
+            </div>
+            <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block" >
+                REGISTER
+            </a>
+            
+        </form>
+        
+    </div>
+</div>

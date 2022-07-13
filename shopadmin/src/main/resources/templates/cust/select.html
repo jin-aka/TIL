@@ -1,0 +1,43 @@
+
+ <!-- Page Heading -->
+ <h1 class="h3 mb-2 text-gray-800">Customer Tables</h1>
+
+ <!-- DataTales Example -->
+ <div class="card shadow mb-4">
+
+     <div class="card-body">
+         <div class="table-responsive">
+             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                 <thead>
+                     <tr>
+                         <th>ID</th>
+                         <th>PWD</th>
+                         <th>NAME</th>
+                         <th>ADDRESS</th>
+                         <th>REGDATE</th>
+                     </tr>
+                 </thead>
+                 <tfoot>
+                     <tr>
+                         <th>ID</th>
+                         <th>PWD</th>
+                         <th>NAME</th>
+                         <th>ADDRESS</th>
+                         <th>REGDATE</th>
+                     </tr>
+                 </tfoot>
+                 <tbody>
+                     <tr th:each="c : ${clist}">
+                     	<!--  /cust/detail?id=id01........ -->
+                         <td><a th:text="${c.id}" th:href="@{detail(id=${c.id})}">id01</a></td>
+                         <td th:text="${c.pwd}">pwd03</td>
+                         <td th:text="${c.name}">Edinburgh</td>
+                         <td th:text="${c.addr}">Seoul</td>
+                         <td th:text="${#dates.format(c.regdate,'yyyy/MM/dd')}">2011/04/25</td>
+                     </tr>
+                  
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>

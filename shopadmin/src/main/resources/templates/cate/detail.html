@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function(){
+	$('#deletebtn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('삭제하시겠습니까?');
+		if(c==true){
+			location.href='delete?id='+id;		
+		}
+	});	
+	
+	$('#updatebtn').click(function(){
+		$('.category').attr({
+			'method':'post',
+			'action':'update'
+		});
+		$('.category').submit();
+	});	
+});
+</script>
+
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Category Information</h1>
+            <h1 th:if = "${msg != null}" th:text="${msg}"></h1>
+        </div>
+        <form class="category">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="id" value="id01" th:value="${c.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="name" value="name" th:value="${c.name}">
+            </div>
+            <div class="form-group">
+				<select name="pid" class="form-control form-control-user">
+            		<option value="0">TOP</option>
+            		<option th:each="s : ${slist}" 
+            				th:value="${s.id}" 
+            				th:text="${s.name}"
+            				th:selected="${c.pid}==${s.id}">            				
+            				</option>           
+               </select>
+            </div>               
+             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block" >
+                UPDATE
+            </a>
+           	<a id="deletebtn" href="#"
+           	th:href="@{delete(id=${c.id})}"
+           	class="btn btn-primary btn-user btn-block" >
+                DELETE
+            </a>     
+
+        </form>
+        
+    </div>
+</div>

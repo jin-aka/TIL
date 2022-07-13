@@ -1,0 +1,59 @@
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});	
+});
+</script>
+
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="id" value="id01" th:value="${c.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="uid" value="uid" th:value="${c.uid}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="pid" value="pid" th:value="${c.pid}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="pname" value="pname" th:value="${c.pname}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="pprice" value="pprice" th:value="${c.pprice}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="catename" value="catename" th:value="${c.catename}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="regdate" value="22/06/09" th:value="${#dates.format(c.regdate,'yyyy/MM/dd')}">
+            </div> 
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="cnt" value="cnt" th:value="${c.cnt}">
+            </div>                 
+             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block" >
+                UPDATE
+            </a>
+            
+        </form>
+        
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<meta charset="utf-8">
+</style>
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});	
+});
+</script>
+
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Product Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+           		<img th:src="@{'/img/'+${p.imgname}}">
+            	<input type="hidden" name="imgname" th:value="${p.imgname}">
+            </div>       
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="id" value="id01" th:value="${p.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="name" value="james" th:value="${p.name}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="price" value="price" th:value="${p.price}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="regdate" value="22/06/09" th:value="${#dates.format(p.regdate,'yyyy/MM/dd')}" readonly="readonly">
+            </div>
+            <div class="form-group">
+               <select name="cid" class="form-control form-control-item">
+               		<option th:each="c:${clist}" 
+               		th:if="${c.pid != 0}"
+               		th:value="${c.id}" 
+               		th:text="${c.name}"
+               		th:selected="${c.id}==${p.cid}">
+               		</option>
+               </select>            
+            </div>
+            <div class="form-group">
+            	<input type="file" class="form-control form-control-item" name="mf">      	
+            </div>
+            
+
+                        
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block" >
+                UPDATE
+            </a>
+            <a id="deletebtn" href="#"
+           	th:href="@{delete(id=${p.id})}"
+           	class="btn btn-primary btn-user btn-block" >
+                DELETE
+            </a>  
+            
+        </form>
+        
+    </div>
+</div>

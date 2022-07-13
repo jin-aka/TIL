@@ -1,0 +1,47 @@
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});	
+});
+</script>
+
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="id" value="id01" th:value="${c.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="pwd" value="pwd01" th:value="${c.pwd}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="name" value="james" th:value="${c.name}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="addr" value="seoul" th:value="${c.addr}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="regdate" value="22/06/09" th:value="${#dates.format(c.regdate,'yyyy/MM/dd')}">
+            </div>                  
+             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block" >
+                UPDATE
+            </a>
+            
+        </form>
+        
+    </div>
+</div>

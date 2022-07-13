@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<h1> Main Page </h1>
-	<h2><a href="/kakao">Kakao Test</a></h2>
+	<h1>Main Page</h1>
+	<h2 th:if="${session.loginid == null}">
+	   <a href="/login">Login</a></h2>
+	<h2 th:unless="${session.loginid == null}">
+	   <a href="/logout"><span th:text="${session.loginid}"></span>
+		Logout</a></h2>
+	<h2><a href="/kakao">KAKATEST</a></h2>
 	<h2><a href="/papago">Papago Test</a></h2>
+	<h2><a href="/go">GO</a></h2>
+	<h2><a href="/websocket">WebSocket</a></h2>
 </body>
 </html>

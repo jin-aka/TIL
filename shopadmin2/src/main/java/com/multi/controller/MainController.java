@@ -33,9 +33,11 @@ public class MainController {
 				if(cust.getPwd().equals(pwd)) {
 					return "home";
 				}
+			}else {
+				return "login";
 			}
 		} catch (Exception e) {
-			return "login";
+			
 		}
 		return "home";
 	}
